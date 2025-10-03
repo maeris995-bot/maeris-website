@@ -11,12 +11,57 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
+            background: #000000;
         }
         
         .full-page-svg {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            animation: fadeInScale 2s ease-out;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.3));
+        }
+        
+        /* Fade in and scale animation */
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Add floating effect after initial load */
+        .full-page-svg {
+            animation: fadeInScale 2s ease-out, float 3s ease-in-out 2s infinite;
+        }
+        
+        /* Glow effect */
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.6));
+            }
+        }
+        
+        /* Add glow effect */
+        .full-page-svg:hover {
+            animation: fadeInScale 2s ease-out, float 3s ease-in-out 2s infinite, glow 2s ease-in-out infinite;
         }
     </style>
 </head>
