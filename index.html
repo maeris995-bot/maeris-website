@@ -168,6 +168,7 @@
             text-align: center;
             padding: 2rem;
             min-height: 100vh;
+            overflow-y: auto;
         }
 
         /* Logo Section */
@@ -241,11 +242,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            /* margin-left: 2rem; */
         }
 
         .center-logo {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
             object-fit: contain;
             filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.5));
             animation: logoFloat 4s ease-in-out infinite;
@@ -253,7 +255,7 @@
 
         .brand-text-left, .brand-text-right {
             font-family: 'IBM Plex Sans', sans-serif;
-            font-size: 3.5rem;
+            font-size: 2.4rem;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.1em;
@@ -291,6 +293,12 @@
             margin-bottom: 2rem;
             animation: fadeInUp 1.5s ease-out 1s both;
             order: 3;
+        }
+
+        @media (max-width: 600px) {
+            .coming-soon-text {
+                order: 3;
+            }
         }
 
 
@@ -360,18 +368,48 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .brand-container {
-                gap: 2rem;
+                gap: 2.5rem;
+                margin-top: 4rem;
             }
             
             .brand-text-left, .brand-text-right {
-                font-size: 2.5rem;
+                font-size: 2.1rem;
             }
             
             .center-logo {
-                width: 140px;
-                height: 140px;
+                width: 200px;
+                height: 200px;
+            }
+            
+            .brand-subtext {
+                font-size: 1.2rem;
+            }
+            
+            .coming-soon-text {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .brand-container {
+                gap: 2rem;
+                margin-top: 3rem;
+                margin-bottom: 2rem;
+            }
+            
+            .brand-text-left, .brand-text-right {
+                font-size: 1.9rem;
+            }
+            
+            .center-logo {
+                width: 180px;
+                height: 180px;
             }
             
             .brand-subtext {
@@ -383,26 +421,129 @@
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             .brand-container {
+                flex-direction: column;
                 gap: 1.5rem;
+                margin-top: 2rem;
+                align-items: center;
             }
             
-            .brand-text-left, .brand-text-right {
-                font-size: 2rem;
+            .brand-left, .brand-right {
+                display: none;
             }
             
             .center-logo {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
+                order: 1;
+            }
+            
+            .coming-soon-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Mobile-specific brand text layout */
+        @media (max-width: 600px) {
+            .mobile-brand-text {
+                display: block;
+                text-align: center;
+                margin-bottom: 1rem;
+                order: 2;
+            }
+            
+            .mobile-brand-main {
+                font-family: 'IBM Plex Sans', sans-serif;
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: #ffffff;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin: 0;
+                text-shadow: 0 0 30px rgba(255, 107, 53, 0.6);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                position: relative;
+            }
+            
+            .mobile-brand-subtext {
+                font-family: 'IBM Plex Sans', sans-serif;
+                font-size: 1rem;
+                font-weight: 600;
+                color: #FF6B35;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-top: 0.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                position: relative;
+            }
+            
+            .mobile-brand-subtext span:first-child {
+                margin-right: 0.3em;
+            }
+            
+            .mobile-brand-subtext span:last-child {
+                margin-left: 0.3em;
+            }
+        }
+
+        @media (min-width: 601px) {
+            .mobile-brand-text {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 0.5rem;
+            }
+            
+            .brand-container {
+                gap: 1rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .brand-text-left, .brand-text-right {
+                font-size: 1.3rem;
+            }
+            
+            .center-logo {
+                width: 130px;
+                height: 130px;
             }
             
             .brand-subtext {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .coming-soon-text {
                 font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .brand-text-left, .brand-text-right {
+                font-size: 1.1rem;
+            }
+            
+            .center-logo {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .brand-subtext {
+                font-size: 0.8rem;
+            }
+            
+            .coming-soon-text {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -442,6 +583,19 @@
                 <div class="brand-subtext">25</div>
             </div>
         </div>
+        
+        <!-- Mobile-specific brand text -->
+        <div class="mobile-brand-text">
+            <div class="mobile-brand-main">
+                <span>MAERIS</span>
+                <span>PARIS</span>
+            </div>
+            <div class="mobile-brand-subtext">
+                <span>EST</span>
+                <span>25</span>
+            </div>
+        </div>
+        
         <h2 class="coming-soon-text">Coming Soon</h2>
 
 
